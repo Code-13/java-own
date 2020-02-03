@@ -1,0 +1,13 @@
+# 配置文件
+server:
+  port: 13001
+
+spring:
+  application:
+    name: springboot-study-config  #springboot配置
+  profiles:
+    active: default
+
+# 使用@Value获取值 只能在 application.yaml中
+code13:
+  num: ${random.uuid}

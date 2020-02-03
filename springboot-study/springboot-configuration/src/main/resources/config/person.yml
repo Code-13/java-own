@@ -1,0 +1,11 @@
+# 将配置文件中配置的每一个属性的映射到组件中
+person:
+  lastName: code13
+  age: 18
+  boss: false
+  birth: 2020/2/1
+  map: {k1: v1,k2: 22}
+  list: [java,python,go,scala]
+  dog:
+    name: 小狗
+    age: 2
