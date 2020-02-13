@@ -1,0 +1,15 @@
+# spring4all 的 swagger配置  https://github.com/SpringForAll/spring-boot-starter-swagger
+swagger:
+  title: spring4all 和 knife4j
+  description: spring4all和knife4j的组合测试
+  version: 1.0.0
+  license: Apache License, Version 2.0
+  license-url: https://www.apache.org/licenses/LICENSE-2.0.html
+  terms-of-service-url: https://www.tianjiyunke.com
+  contact:
+    name: code13
+    url: https://github.com/Code-13
+    email: code__13@outlook.com
+  base-package: com.code13
+  base-path: /**
+  exclude-path: /error, /ops/**

@@ -1,0 +1,24 @@
+#logging:
+#  # 级别
+#  level:
+#    root: info
+#  file:
+#    在当前磁盘的根路径下创建spring文件夹和里面的log文件夹；使用 spring.log作为默认文件
+#    path: /spring/log/spring
+#    path: springboot.log
+#    path: D:/springboot-log
+#    path和name指定一个即可
+#    name: springboot-study-log.log
+#  pattern:
+#    console: %d(yyyy-Mm-dd HH:mm:ss.SSS) [%thread] %-5level %logger{50} - %msg%n
+#    file: %d(yyyy-Mm-dd HH:mm:ss.SSS) [%thread] %-5level %logger{50} - %msg%n
+
+
+# 在 org.springframework.boot:spring-boot:2.2.4.RELEASE 中 的 org.springframework.boot.logging包中定义了spring 的日志
+# springboot 2.2.4 官方文档 https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/html/spring-boot-features.html#boot-features-logging
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: springboot-study-log

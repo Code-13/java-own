@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+  <contextName>springboot-scheduler</contextName>
+
+  <!-- 彩色日志 -->
+  <!-- 彩色日志依赖的渲染类 -->
+  <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+  <conversionRule conversionWord="wex"
+                  converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+  <conversionRule conversionWord="wEx"
+                  converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+  <!-- 彩色日志格式 -->
+  <property name="CONSOLE_LOG_PATTERN"
+            value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%level){blue} %clr(${PID}){magenta} %clr([%thread]){orange} %clr(%logger){cyan} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+  <property name="CONSOLE_LOG_PATTERN_NO_COLOR"
+            value="[${APP_NAME}:${ServerIP}:${ServerPort}] [%X{traceId},%X{X-B3-TraceId}] %d{yyyy-MM-dd HH:mm:ss.SSS} %level ${PID} [%thread] %logger %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+  <property name="CONSOLE"
+            value="%yellow(%date{yyyy-MM-dd HH:mm:ss}) | %highlight(%-5level) | %blue(%thread) | %blue(%file:%line) | %green(%logger) | %cyan(%msg%n)"/>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <withJansi>true</withJansi>
+    <encoder>
+      <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+    <!--<appender-ref ref="ERROR"/>-->
+    <!--<appender-ref ref="INFO"/>-->
+  </root>
+
+</configuration>

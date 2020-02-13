@@ -7,12 +7,11 @@
   <parent>
     <groupId>com.code13</groupId>
     <artifactId>springboot-study</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
 
-  <groupId>com.code13</groupId>
   <artifactId>springboot-configuration</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <name>springboot-configuration</name>
   <description>Spring Boot 配置</description>
 

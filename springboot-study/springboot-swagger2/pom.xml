@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>springboot-study</artifactId>
+    <groupId>com.code13</groupId>
+    <version>1.0.0</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>springboot-swagger2</artifactId>
+  <version>1.0.0</version>
+  <name>springboot-swagger2</name>
+  <description>swagger2文档</description>
+
+  <properties>
+    <spring4all-swagger.version>1.9.1.RELEASE</spring4all-swagger.version>
+    <knife4j.version>2.0.1</knife4j.version>
+  </properties>
+
+  <dependencies>
+    <!-- http://www.spring4all.com/ -->
+    <!-- https://github.com/SpringForAll/spring-boot-starter-swagger -->
+    <dependency>
+      <groupId>com.spring4all</groupId>
+      <artifactId>swagger-spring-boot-starter</artifactId>
+      <version>${spring4all-swagger.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>org.projectlombok</artifactId>
+          <groupId>lombok</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!--<dependency>-->
+    <!--  <groupId>io.springfox</groupId>-->
+    <!--  <artifactId>springfox-swagger2</artifactId>-->
+    <!--  <version>2.9.2</version>-->
+    <!--</dependency>-->
+
+    <!-- knife4j https://doc.xiaominfo.com/ swagger增强 -->
+    <dependency>
+      <groupId>com.github.xiaoymin</groupId>
+      <artifactId>knife4j-spring-boot-starter</artifactId>
+      <version>${knife4j.version}</version>
+    </dependency>
+
+  </dependencies>
+
+</project>

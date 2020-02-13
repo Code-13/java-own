@@ -4,23 +4,21 @@
 
   <modelVersion>4.0.0</modelVersion>
 
+
   <parent>
     <groupId>com.code13</groupId>
     <artifactId>own</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>springboot-study</artifactId>
+  <artifactId>java-core</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-  <name>springboot</name>
-  <description>Spring Boot Study</description>
+  <name>java-core</name>
+  <description>java核心</description>
 
   <modules>
-    <module>springboot-configuration</module>
-    <module>springboot-log</module>
-    <module>springboot-scheduler</module>
-    <module>springboot-swagger2</module>
+    <module>java-enum</module>
   </modules>
 
   <properties>
@@ -28,9 +26,6 @@
 
   <dependencies>
   </dependencies>
-
-  <dependencyManagement>
-  </dependencyManagement>
 
   <build>
     <plugins>
