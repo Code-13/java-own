@@ -21,6 +21,7 @@
     <module>springboot-log</module>
     <module>springboot-scheduler</module>
     <module>springboot-swagger2</module>
+    <module>springboot-datasource</module>
   </modules>
 
   <properties>

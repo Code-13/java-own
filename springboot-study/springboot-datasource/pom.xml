@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>springboot-study</artifactId>
+    <groupId>com.code13</groupId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>springboot-datasource</artifactId>
+  <version>1.0.0</version>
+  <name>springboot-datasource</name>
+  <description>springboot-数据源-多数据源-动态数据源配置</description>
+
+  <properties>
+    <druid.version>1.1.21</druid.version>
+    <mybatis.version>2.1.1</mybatis.version>
+    <mybatis-plus.version>3.3.1</mybatis-plus.version>
+    <dynamic-datasource>3.0.0</dynamic-datasource>
+    <p6spy.version>3.8.7</p6spy.version>
+  </properties>
+
+  <dependencies>
+    <!-- mysql驱动 -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+
+    <!-- jdbc -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid-spring-boot-starter</artifactId>
+      <version>${druid.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+      <version>${mybatis.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter-test -->
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter-test</artifactId>
+      <version>${mybatis.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- mybatis-plus -->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+      <version>${mybatis-plus.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.baomidou/dynamic-datasource-spring-boot-starter -->
+    <!-- 动态数据源 -->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+      <version>${dynamic-datasource}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.alibaba</groupId>
+          <artifactId>druid-spring-boot-starter</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.baomidou</groupId>
+          <artifactId>mybatis-plus-boot-starter</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>p6spy</groupId>
+          <artifactId>p6spy</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/p6spy/p6spy -->
+    <!--  执行 SQL 分析打印 -->
+    <dependency>
+      <groupId>p6spy</groupId>
+      <artifactId>p6spy</artifactId>
+      <version>${p6spy.version}</version>
+    </dependency>
+
+  </dependencies>
+
+</project>
