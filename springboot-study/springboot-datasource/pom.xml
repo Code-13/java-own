@@ -22,6 +22,7 @@
     <mybatis-plus.version>3.3.1</mybatis-plus.version>
     <dynamic-datasource>3.0.0</dynamic-datasource>
     <p6spy.version>3.8.7</p6spy.version>
+    <beetl.version>3.0.17.RELEASE</beetl.version>
   </properties>
 
   <dependencies>
@@ -72,20 +73,6 @@
       <groupId>com.baomidou</groupId>
       <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
       <version>${dynamic-datasource}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.alibaba</groupId>
-          <artifactId>druid-spring-boot-starter</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.baomidou</groupId>
-          <artifactId>mybatis-plus-boot-starter</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>p6spy</groupId>
-          <artifactId>p6spy</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/p6spy/p6spy -->
@@ -94,6 +81,22 @@
       <groupId>p6spy</groupId>
       <artifactId>p6spy</artifactId>
       <version>${p6spy.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
+    <!-- mybatis-plus 代码生成器 -->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-generator</artifactId>
+      <version>${mybatis-plus.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.ibeetl/beetl -->
+    <!-- beetl 模板引擎 -->
+    <dependency>
+      <groupId>com.ibeetl</groupId>
+      <artifactId>beetl</artifactId>
+      <version>${beetl.version}</version>
     </dependency>
 
   </dependencies>

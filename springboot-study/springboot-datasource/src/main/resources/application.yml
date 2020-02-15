@@ -1,6 +1,21 @@
 spring:
   datasource:
+    druid:
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: admin
+        login-password: admin
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.js , *.gif ,*.jpg ,*.png ,*.css ,*.ico , /druid/*"
+        session-stat-max-count: 1000
+        profile-enable: true
+      db-type: mysql
     dynamic:
+      primary: tjyun_uat
       p6spy: true
       druid: #以下是全局默认值，可以全局更改
         initial-size: 1
@@ -16,49 +31,43 @@ spring:
         time-between-eviction-runs-millis: 60000
         min-evictable-idle-time-millis: 300000
         filters: stat,wall
-        web-stat-filter:
-          enabled: true
-          url-pattern: /*
-          exclusions: "*.js , *.gif ,*.jpg ,*.png ,*.css ,*.ico , /druid/*"
-          session-stat-max-count: 1000
-          profile-enable: true
-        stat-view-servlet:
-          enabled: true
-          url-pattern: /druid/*
-          reset-enable: true
-          login-username: admin
-          login-password: admin
         wall:
           multi-statement-allow: true
       datasource:
-        master:
-          username:
-          password:
-          url: jdbc:p6spy:mysql://
-          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-          schema: db/schema.sql
+        tjyun_uat:
+          data-source-name: uat
+          username: tjyk
+          password: tjyk!2019
+          url: jdbc:mysql://rm-bp11bdf19z4m594yrjo.mysql.rds.aliyuncs.com:3306/tjyun_test?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+          #          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          #          schema: db/schema.sql
           druid: #这里可以重写默认值
+            #            db-type: mysql
             initial-size: 5
-            public-key:
-        slave_1:
-          username: sa
-          password: "123456"
-          url: jdbc:p6spy:mysql://
-          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+        tjyun_dev:
+          data-source-name: dev
+          username: root
+          password: soofuju123
+          url: jdbc:mysql://117.89.135.182:3306/tjyun?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+          driver-class-name: com.mysql.cj.jdbc.Driver
           druid:
+            #            db-type: mysql
             initial-size: 6
-        slave_2:
-          username: sa
-          password: "123456"
-          url: jdbc:p6spy:mysql://
-          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-        slave_3:
-          username: sa
-          password: "123456"
-          url: jdbc:p6spy:mysql://
-          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+        tjyun_local:
+          data-source-name: local
+          username: code13
+          password: 1024
+          url: jdbc:mysql://127.0.0.1:3306/tjyun?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        # 可以配置多个从库 每一个均可以单独配置 druid
+  #        slave_3:
+  #          username: sa
+  #          password: "123456"
+  #          url: jdbc:p6spy:mysql://
+  #          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
   autoconfigure:
-    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure # 去除druid配置
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure # 去除druid自动配置配置重要！！！
   output:
     ansi:
       enabled: always
