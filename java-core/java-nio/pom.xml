@@ -15,5 +15,11 @@
   <version>1.0.0</version>
   <description>java NIO</description>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+    </dependency>
+  </dependencies>
 
 </project>

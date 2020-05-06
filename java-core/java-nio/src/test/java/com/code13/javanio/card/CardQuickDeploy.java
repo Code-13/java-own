@@ -1,17 +1,10 @@
 package com.code13.javanio.card;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import javax.annotation.concurrent.NotThreadSafe;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * @author code13
@@ -20,133 +13,77 @@ import java.util.stream.Collectors;
 @NotThreadSafe
 public class CardQuickDeploy implements AutoCloseable {
 
-  private String filePath;
-  private final FileType fileType;
-  private List<String> readAllLines;
-  private List<String> resultList;
+  private volatile String projectPath;
 
-  public CardQuickDeploy(String filePath) throws IOException {
-    this.filePath = filePath;
-    this.fileType = FileType.ofFilPath(filePath);
-    this.readAllLines = Files.readAllLines(Paths.get(filePath), StandardCharsets.UTF_8);
-    this.resultList = new ArrayList<>(this.readAllLines);
-  }
+  private volatile FileQuickDeploy appIdDeploy;
 
-  /**
-   * 部署的方法
-   *
-   * @param content appId的内容
-   */
-  public void deploy(String content) throws IOException {
-    final int lineNumber = this.getLineNumber();
-    this.replace(lineNumber, content);
-    this.write();
-  }
+  private volatile FileQuickDeploy wxAppIdDeploy;
 
-  /**
-   * 获取AppId的所在行数
-   *
-   * @return {@link int} 所在行数
-   */
-  public int getLineNumber() {
+  private volatile CityQuickDeploy cityQuickDeploy;
 
-    final List<String> lineList = this.readAllLines
-      .stream()
-      .filter(line -> !line.trim().startsWith("//"))
-      .filter(line -> !line.trim().startsWith("/**"))
-      .filter(line -> !line.trim().startsWith("*"))
-      .filter(line -> !line.trim().startsWith("/*"))
-      .filter(line -> !line.trim().startsWith("* */"))
-      .peek(System.out::println)
-      .collect(Collectors.toList());
+  private volatile WxIdeUtil wxIdeUtil;
 
-    String s = "";
-
-    int lineNumber = 0;
-
-    for (int i = 0; i < lineList.size(); i++) {
-      String line = lineList.get(i);
-      if (line.trim().startsWith(this.fileType.getFindFlag())) {
-        s = lineList.get(i + 1);
-        break;
-      }
+  public CardQuickDeploy(String projectPath) {
+    try {
+      this.projectPath = projectPath;
+      this.appIdDeploy = new FileQuickDeploy(projectPath + "\\src\\common\\manager\\appManager.js");
+      this.wxAppIdDeploy = new FileQuickDeploy(projectPath + "\\src\\manifest.json");
+      this.cityQuickDeploy = new CityQuickDeploy(projectPath + "\\src\\store\\state.js");
+      this.wxIdeUtil = new WxIdeUtil(projectPath);
+    } catch (IOException e) {
+      throw new IllegalArgumentException("项目路径不正确");
     }
+  }
 
-    for (int i = 0; i < this.readAllLines.size(); i++) {
-      if (Objects.equals(s, this.readAllLines.get(i))) {
-        lineNumber = i;
-        break;
-      }
+  public synchronized CardQuickDeploy setAppId(String appId) {
+    this.appIdDeploy.setContent(appId);
+    return this;
+  }
+
+  public synchronized CardQuickDeploy setWxAppId(String wxAppId) {
+    this.wxAppIdDeploy.setContent(wxAppId);
+    return this;
+  }
+
+  public synchronized CardQuickDeploy setCityName(String cityName) {
+    this.cityQuickDeploy.setCityName(cityName);
+    return this;
+  }
+
+  public synchronized CardQuickDeploy setCityId(int cityId) {
+    this.cityQuickDeploy.setCityId(cityId);
+    return this;
+  }
+
+  public synchronized void deploy(String version) {
+    try {
+      this.appIdDeploy.deploy();
+      this.wxAppIdDeploy.deploy();
+      this.cityQuickDeploy.deploy();
+      CmdUtil.build(this.projectPath);
+      this.wxIdeUtil.upload(version);
+      CmdUtil.rollback(this.projectPath);
+    } catch (IOException e) {
+      e.printStackTrace();
     }
-
-    return lineNumber;
-  }
-
-  /**
-   * 替换 appId的值
-   *
-   * @param lineNumber 行数
-   * @param content    所要替换的内容
-   */
-  public void replace(int lineNumber, String content) {
-    this.resultList.set(lineNumber, this.fileType.buildResult(content));
-  }
-
-  /**
-   * 写出文件
-   * <p>
-   * 将写出的文件替换原文件
-   */
-  public void write() throws IOException {
-    final String tempList = String.join("\n", this.resultList);
-    final byte[] bytes = tempList.getBytes(StandardCharsets.UTF_8);
-    Files.write(Paths.get(this.filePath), bytes);
   }
 
   @Override
   public void close() {
-    this.filePath = null;
-    this.readAllLines = null;
-    this.resultList = null;
+    synchronized (this) {
+      this.appIdDeploy = null;
+      this.wxAppIdDeploy = null;
+      this.cityQuickDeploy = null;
+      this.projectPath = null;
+      this.wxIdeUtil = null;
+    }
   }
 
-  @Getter
-  @AllArgsConstructor
-  private enum FileType {
-
-    JS("getAppId", "    return \"", "\""),
-
-    JSON("\"mp-weixin\"", "    \"appid\": \"", "\","),
-
-    ;
-
-    private final String findFlag;
-
-    private final String resultFlag;
-
-    private final String resultSymbol;
-
-    private String buildResult(String content) {
-      return this.resultFlag + content + this.resultSymbol;
-    }
-
-    private static FileType ofFilPath(String filePath) {
-      final int index = filePath.lastIndexOf(".");
-      if (index == -1) {
-        throw new IllegalArgumentException("文件类型不正确");
-      }
-
-      final String substring = filePath.substring(index + 1);
-
-      for (FileType fileType : values()) {
-        if (fileType.toString().equalsIgnoreCase(substring)) {
-          return fileType;
-        }
-      }
-
-      throw new IllegalArgumentException("文件类型不正确");
-    }
-
+  public static String nextVersion(String version) {
+    final List<String> list = new ArrayList<>(Arrays.asList(version.split("\\.")));
+    list.set(list.size() - 1, String.valueOf((Integer.parseInt(list.get(list.size() - 1)) + 1)));
+    final String join = String.join(".", list);
+    return "v" + join;
   }
 
 }
