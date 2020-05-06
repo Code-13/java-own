@@ -60,9 +60,9 @@ public class CardQuickDeploy implements AutoCloseable {
       this.appIdDeploy.deploy();
       this.wxAppIdDeploy.deploy();
       this.cityQuickDeploy.deploy();
-      CmdUtil.build(this.projectPath);
+      ShellUtil.build(this.projectPath);
       this.wxIdeUtil.upload(version);
-      CmdUtil.rollback(this.projectPath);
+      ShellUtil.rollback(this.projectPath);
     } catch (IOException e) {
       e.printStackTrace();
     }

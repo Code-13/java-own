@@ -34,7 +34,7 @@ public class FileQuickDeploy implements AutoCloseable {
     this.resultList = new ArrayList<>(this.readAllLines);
   }
 
-  public void setContent(String content) {
+  public final void setContent(String content) {
     this.content = content;
   }
 
@@ -90,7 +90,7 @@ public class FileQuickDeploy implements AutoCloseable {
     return this.changeType.getFindFlag();
   }
 
-  protected String buildResult(String content) {
+  private String buildResult(String content) {
     return this.changeType.buildResult(content);
   }
 
@@ -100,7 +100,7 @@ public class FileQuickDeploy implements AutoCloseable {
    * @param lineNumber 行数
    * @param content    所要替换的内容
    */
-  public void replace(int lineNumber, String content) {
+  private void replace(int lineNumber, String content) {
     this.resultList.set(lineNumber, this.buildResult(content));
   }
 
@@ -109,7 +109,7 @@ public class FileQuickDeploy implements AutoCloseable {
    * <p>
    * 将写出的文件替换原文件
    */
-  public void write() throws IOException {
+  protected void write() throws IOException {
     final String tempList = String.join("\n", this.resultList);
     final byte[] bytes = tempList.getBytes(StandardCharsets.UTF_8);
     Files.write(Paths.get(this.filePath), bytes);

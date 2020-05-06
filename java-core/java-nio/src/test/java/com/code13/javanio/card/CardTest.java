@@ -1,9 +1,11 @@
 package com.code13.javanio.card;
 
 import lombok.extern.slf4j.Slf4j;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -154,19 +156,20 @@ public class CardTest {
     //final String url = "http://192.168.0.218:" + this.port + "/v2/upload?project=" + this.project + "&version=" + version + "&desc=desc";
     final String url = "http://127.0.0.1:" + 12561 + "/v2/upload?project=" + URLEncoder.encode("D:\\code13\\company\\tjyun_app_card\\dist\\build\\mp-weixin", StandardCharsets.UTF_8) + "&version=" + "v1.0.23" + "&desc=test";
 
-    OkHttpClient client = new OkHttpClient();
-    Request request = new Request.Builder().url(url).build();
-    try (Response response = client.newCall(request).execute()) {
-      if (!response.isSuccessful()) {
-        log.error(response.body().string());
-        throw new IllegalArgumentException("上传代码失败");
-      }
-      String responseBody = response.body().string();
+    try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+      HttpGet httpGet = new HttpGet(url);
+      String responseBody = httpClient.execute(httpGet, httpResponse -> {
+        int status = httpResponse.getStatusLine().getStatusCode();
+        if (status < 200 || status >= 300) {
+          // ... handle unsuccessful request
+        }
+        HttpEntity entity = httpResponse.getEntity();
+        return entity != null ? EntityUtils.toString(entity) : null;
+      });
       // ... do something with response
-      log.info("上传代码成功");
+
     } catch (IOException e) {
-      log.error(e.getMessage());
-      throw new IllegalArgumentException("上传代码失败");
+      // ... handle IO exception
     }
 
   }

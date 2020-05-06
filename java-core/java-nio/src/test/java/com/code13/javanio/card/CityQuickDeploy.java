@@ -20,12 +20,12 @@ public class CityQuickDeploy extends FileQuickDeploy {
     super(filePath);
   }
 
-  public CityQuickDeploy setCityName(String cityName) {
+  public final CityQuickDeploy setCityName(String cityName) {
     this.cityName = cityName;
     return this;
   }
 
-  public CityQuickDeploy setCityId(int cityId) {
+  public final CityQuickDeploy setCityId(int cityId) {
     this.cityId = cityId;
     return this;
   }
@@ -35,22 +35,9 @@ public class CityQuickDeploy extends FileQuickDeploy {
     return "city: {";
   }
 
-  @Deprecated
-  @Override
-  public void replace(int lineNumber, String content) {
-    throw new IllegalArgumentException();
-  }
-
-  @Deprecated
-  @Override
-  protected String buildResult(String content) {
-    throw new IllegalArgumentException();
-  }
-
   @Override
   public void deploy() throws IOException {
     final int lineNumber = super.getLineNumber();
-    this.resultList.set(lineNumber, "");
     this.resultList.set(lineNumber, "    shortName : \"" + this.cityName + "\",");
     this.resultList.set(lineNumber + 1, "    id : " + this.cityId + "");
     super.write();
