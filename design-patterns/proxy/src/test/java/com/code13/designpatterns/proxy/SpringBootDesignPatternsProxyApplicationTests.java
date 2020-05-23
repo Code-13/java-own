@@ -4,8 +4,9 @@ import com.code13.designpatterns.proxy.demo01.Host;
 import com.code13.designpatterns.proxy.demo01.Proxy;
 import com.code13.designpatterns.proxy.demo01.Rent;
 import com.code13.designpatterns.proxy.dynamicproxy.ProxyCommon;
+import com.code13.designpatterns.proxy.noimpl.IUserDao;
+import com.code13.designpatterns.proxy.noimpl.ProxyFactory;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * 测试类
@@ -13,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author code13
  * @date 2020-02-13 21:04
  */
-@SpringBootTest
 public class SpringBootDesignPatternsProxyApplicationTests {
 
   /**
@@ -66,4 +66,11 @@ public class SpringBootDesignPatternsProxyApplicationTests {
     Rent proxy = (Rent) common.getProxy();
     proxy.rent();
   }
+
+  @Test
+  public void noImplTest() {
+    IUserDao dao = new ProxyFactory<>(IUserDao.class).getProxy();
+    dao.saveUser();
+  }
+
 }
