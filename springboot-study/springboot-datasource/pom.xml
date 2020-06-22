@@ -7,7 +7,7 @@
 
   <parent>
     <artifactId>springboot-study</artifactId>
-    <groupId>com.code13</groupId>
+    <groupId>com.github.code13.springboot</groupId>
     <version>1.0.0</version>
   </parent>
 

@@ -1,0 +1,5 @@
+server:
+  port: 13001
+spring:
+  application:
+    name: design-patterns

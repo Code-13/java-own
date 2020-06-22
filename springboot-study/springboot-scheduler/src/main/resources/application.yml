@@ -56,7 +56,7 @@ mybatis-plus:
   # mapper xml文件包
   mapper-locations: classpath*:com/code13/**/dao/*.xml
   # 枚举包
-  type-enums-package: com.code13.springbootscheduler.quartz.entity.enums
+  type-enums-package: com.github.code13.springbootscheduler.quartz.entity.enums
 
 # 日志
 logging:

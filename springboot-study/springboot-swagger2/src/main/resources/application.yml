@@ -10,6 +10,6 @@ swagger:
     name: code13
     url: https://github.com/Code-13
     email: code__13@outlook.com
-  base-package: com.code13
+  base-package: com.github.code13
   base-path: /**
   exclude-path: /error, /ops/**

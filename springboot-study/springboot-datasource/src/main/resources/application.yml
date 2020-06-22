@@ -86,11 +86,11 @@ mybatis-plus:
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
   # 配置扫描通用枚举包 支持统配符 * 或者 ; 分割  ；使用 @EnumValue 注解枚举属性
-  type-enums-package: com.code13.springbootdatasource.entity.enums
+  type-enums-package: com.github.code13.springbootdatasource.entity.enums
   # MyBatis Mapper 所对应的 XML 文件位置
   mapper-locations: classpath*:com/code13/**/dao/*.xml
   # MyBaits 别名包扫描路径，通过该属性可以给包中的类注册别名，注册后在 Mapper 对应的 XML 文件中可以直接使用类名，而不用使用全限定的类名(即 XML 中调用的时候不用包含包名)
-  type-aliases-package: classpath*:com.code13.springbootdatasource.entity
+  type-aliases-package: classpath*:com.github.code13.springbootdatasource.entity
   # 指定外部化 MyBatis Properties 配置，通过该配置可以抽离配置，实现不同环境的配置部署
   #configuration-properties:
 
