@@ -23,6 +23,10 @@
       <groupId>com.github.code13.java-code</groupId>
       <artifactId>java-nio</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.github.code13.java-code</groupId>
+      <artifactId>java-annotation</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

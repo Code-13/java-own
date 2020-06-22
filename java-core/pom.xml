@@ -22,6 +22,7 @@
     <module>java-enum</module>
     <module>java-nio</module>
     <module>java-center</module>
+    <module>java-annotation</module>
   </modules>
 
   <dependencies>
@@ -41,6 +42,11 @@
       <dependency>
         <groupId>com.github.code13.java-code</groupId>
         <artifactId>java-nio</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.code13.java-code</groupId>
+        <artifactId>java-annotation</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
