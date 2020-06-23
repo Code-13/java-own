@@ -14,7 +14,7 @@
   <artifactId>spring-boot-study</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-  <name>springboot</name>
+  <name>spring-boot-study</name>
   <description>Spring Boot Study</description>
 
   <modules>
@@ -23,6 +23,7 @@
     <module>spring-boot-scheduler</module>
     <module>spring-boot-swagger2</module>
     <module>spring-boot-datasource</module>
+    <module>spring-boot-event</module>
   </modules>
 
   <dependencies>
