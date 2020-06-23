@@ -6,14 +6,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <artifactId>springboot-study</artifactId>
+    <artifactId>spring-boot-study</artifactId>
     <groupId>com.github.code13.springboot</groupId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>springboot-log</artifactId>
+  <artifactId>spring-boot-log</artifactId>
   <version>1.0.0</version>
-  <name>springboot-log</name>
+  <name>spring-boot-log</name>
   <description>springboot日志</description>
 
   <properties>

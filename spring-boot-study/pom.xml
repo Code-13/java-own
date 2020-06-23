@@ -11,18 +11,18 @@
   </parent>
 
   <groupId>com.github.code13.springboot</groupId>
-  <artifactId>springboot-study</artifactId>
+  <artifactId>spring-boot-study</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
   <name>springboot</name>
   <description>Spring Boot Study</description>
 
   <modules>
-    <module>springboot-configuration</module>
-    <module>springboot-log</module>
-    <module>springboot-scheduler</module>
-    <module>springboot-swagger2</module>
-    <module>springboot-datasource</module>
+    <module>spring-boot-configuration</module>
+    <module>spring-boot-log</module>
+    <module>spring-boot-scheduler</module>
+    <module>spring-boot-swagger2</module>
+    <module>spring-boot-datasource</module>
   </modules>
 
   <dependencies>

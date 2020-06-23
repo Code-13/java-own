@@ -6,13 +6,13 @@
 
   <parent>
     <groupId>com.github.code13.springboot</groupId>
-    <artifactId>springboot-study</artifactId>
+    <artifactId>spring-boot-study</artifactId>
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>springboot-configuration</artifactId>
+  <artifactId>spring-boot-configuration</artifactId>
   <version>1.0.0</version>
-  <name>springboot-configuration</name>
+  <name>spring-boot-configuration</name>
   <description>Spring Boot 配置</description>
 
   <properties>

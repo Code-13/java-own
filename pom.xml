@@ -28,7 +28,7 @@
   </developers>
 
   <modules>
-    <module>springboot-study</module>
+    <module>spring-boot-study</module>
     <module>java-core</module>
     <module>design-patterns</module>
     <module>java-leetcode</module>
