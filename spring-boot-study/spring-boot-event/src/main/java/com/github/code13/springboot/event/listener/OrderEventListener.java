@@ -2,6 +2,8 @@ package com.github.code13.springboot.event.listener;
 
 import com.github.code13.springboot.event.event.OrderEvent;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
@@ -30,10 +32,28 @@ public class OrderEventListener {
   }
 
   @Async
-  @TransactionalEventListener(value = OrderEvent.class, phase = TransactionPhase.BEFORE_COMMIT)
+  @TransactionalEventListener(value = OrderEvent.class, phase = TransactionPhase.AFTER_ROLLBACK)
   @Order(3)
   public void sendEmail(OrderEvent orderEvent) {
     log.info("第二个事件");
   }
+
+  @EventListener({ContextStartedEvent.class, ContextRefreshedEvent.class})
+  public void handleContextStart() {
+    // ...
+    log.info("测试多参数");
+  }
+
+  @EventListener
+  public void gen(OrderEvent orderEvent) {
+    // ...
+    log.info("测试非参数");
+  }
+
+  //@EventListener
+  //public void gen1() {
+  //  // ...
+  //  log.info("异常");
+  //}
 
 }

@@ -24,6 +24,7 @@ public class OrderService {
     this.applicationEventPublisher = applicationEventPublisher;
   }
 
+  //@Transactional(rollbackFor = Exception.class)
   public void saveOrder() {
     log.info("保存订单");
     final Order order = new Order();
