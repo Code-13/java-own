@@ -134,15 +134,16 @@
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot.version}</version>
         </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <target>${java.version}</target>
-            <source>${java.version}</source>
-            <encoding>UTF-8</encoding>
-          </configuration>
-        </plugin>
+        <!--<plugin>-->
+        <!--  <artifactId>maven-compiler-plugin</artifactId>-->
+        <!--  <configuration>-->
+        <!--    <target>${java.version}</target>-->
+        <!--    <source>${java.version}</source>-->
+        <!--    <encoding>UTF-8</encoding>-->
+        <!--  </configuration>-->
+        <!--</plugin>-->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
@@ -150,6 +151,20 @@
             <archive>
               <addMavenDescriptor>false</addMavenDescriptor>
             </archive>
+          </configuration>
+        </plugin>
+        <!-- 添加此插件获取方法参数名 -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+            <encoding>${project.build.sourceEncoding}</encoding>
+            <compilerArgs>
+              <arg>-parameters</arg>
+            </compilerArgs>
           </configuration>
         </plugin>
       </plugins>
@@ -203,10 +218,8 @@
   </build>
 
   <repositories>
-    <!--阿里云主仓库，代理了maven central和jcenter仓库-->
     <repository>
       <id>aliyun</id>
-      <name>aliyun</name>
       <url>https://maven.aliyun.com/repository/public</url>
       <releases>
         <enabled>true</enabled>
@@ -216,5 +229,17 @@
       </snapshots>
     </repository>
   </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>aliyun-plugin</id>
+      <url>https://maven.aliyun.com/repository/public</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
 
 </project>

@@ -23,6 +23,7 @@
     <module>java-nio</module>
     <module>java-center</module>
     <module>java-annotation</module>
+    <module>java-reflect</module>
   </modules>
 
   <dependencies>
