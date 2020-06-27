@@ -1,4 +1,4 @@
-package com.github.code13.javacode.nio.card;
+package com.github.code13.javacore.nio.card;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;

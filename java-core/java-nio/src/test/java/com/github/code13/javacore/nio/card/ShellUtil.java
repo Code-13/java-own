@@ -1,4 +1,4 @@
-package com.github.code13.javacode.nio.card;
+package com.github.code13.javacore.nio.card;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

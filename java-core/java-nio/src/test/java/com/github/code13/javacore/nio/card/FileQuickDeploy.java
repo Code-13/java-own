@@ -1,4 +1,4 @@
-package com.github.code13.javacode.nio.card;
+package com.github.code13.javacore.nio.card;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

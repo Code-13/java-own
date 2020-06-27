@@ -1,4 +1,4 @@
-package com.github.code13.javacode.nio.card;
+package com.github.code13.javacore.nio.card;
 
 import javax.annotation.concurrent.NotThreadSafe;
 import java.io.IOException;
