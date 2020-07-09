@@ -34,6 +34,7 @@
     <module>java-leetcode</module>
     <module>java-concurrent</module>
     <module>java-common</module>
+    <module>prettier-libs</module>
   </modules>
 
   <properties>
