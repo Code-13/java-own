@@ -28,6 +28,21 @@
       <artifactId>mapstruct</artifactId>
       <version>${org.mapstruct.version}</version>
     </dependency>
+    <!-- 这种才可以 -->
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct-processor</artifactId>
+      <version>${org.mapstruct.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.70</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -38,13 +53,14 @@
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
-          <annotationProcessorPaths>
-            <path>
-              <groupId>org.mapstruct</groupId>
-              <artifactId>mapstruct-processor</artifactId>
-              <version>${org.mapstruct.version}</version>
-            </path>
-          </annotationProcessorPaths>
+          <!-- 此种方式不可以 -->
+          <!--<annotationProcessorPaths>-->
+          <!--  <path>-->
+          <!--    <groupId>org.mapstruct</groupId>-->
+          <!--    <artifactId>mapstruct-processor</artifactId>-->
+          <!--    <version>${org.mapstruct.version}</version>-->
+          <!--  </path>-->
+          <!--</annotationProcessorPaths>-->
         </configuration>
       </plugin>
     </plugins>
