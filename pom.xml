@@ -35,6 +35,7 @@
     <module>java-concurrent</module>
     <module>java-common</module>
     <module>prettier-libs</module>
+    <module>spring-security</module>
   </modules>
 
   <properties>
