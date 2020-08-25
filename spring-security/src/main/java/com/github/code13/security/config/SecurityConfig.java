@@ -8,9 +8,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author code13
  * @date 2020/7/18 17:38
@@ -23,20 +20,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.httpBasic()
-      .authenticationEntryPoint((request, response, authException) -> {
-        response.setContentType("application/json; charset=UTF-8");
-        response.setStatus(401);
-        Map<String, Object> result = new HashMap<>();
-        result.put("code", 401);
-        result.put("message", "未认证");
-        response.getWriter().write(this.objectMapper.writeValueAsString(result));
-      })
+    //http.httpBasic()
+    //  .authenticationEntryPoint((request, response, authException) -> {
+    //    response.setContentType("application/json; charset=UTF-8");
+    //    response.setStatus(401);
+    //    Map<String, Object> result = new HashMap<>();
+    //    result.put("code", 401);
+    //    result.put("message", "未认证");
+    //    response.getWriter().write(this.objectMapper.writeValueAsString(result));
+    //  })
+    //
+    //  .and()
+    //  .authorizeRequests()
+    //  .anyRequest()
+    //  .authenticated();
 
-      .and()
-      .authorizeRequests()
-      .anyRequest()
-      .authenticated();
+    http.csrf().disable()
+      .authorizeRequests().antMatchers("/rrr").permitAll().anyRequest().authenticated();
 
   }
 
