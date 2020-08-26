@@ -3,6 +3,7 @@ package com.github.code13.security.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * @date 2020/7/18 17:38
  */
 @EnableWebSecurity(debug = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
@@ -35,8 +37,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //  .anyRequest()
     //  .authenticated();
 
-    http.csrf().disable()
-      .authorizeRequests().antMatchers("/rrr").permitAll().anyRequest().authenticated();
+    http.formLogin()
+      .successHandler((request, response, authentication) -> System.out.println("hahah"))
+      .failureHandler((request, response, exception) -> System.out.println("哈哈哈"))
+      .and()
+      .authorizeRequests()
+      .antMatchers("/rrr")
+      .permitAll()
+      .anyRequest()
+      .authenticated()
+      .and()
+      .csrf()
+      .disable();
 
   }
 
