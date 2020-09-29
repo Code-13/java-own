@@ -24,6 +24,7 @@
     <module>java-center</module>
     <module>java-annotation</module>
     <module>java-reflect</module>
+    <module>java-annotation-processor</module>
   </modules>
 
   <dependencies>
