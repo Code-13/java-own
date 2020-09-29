@@ -1,5 +1,6 @@
 package com.github.code13.designpatterns.strategy.demo02.annotation;
 
+import com.github.code13.designpatterns.strategy.demo02.service.OrderType;
 import org.springframework.stereotype.Service;
 
 import java.lang.annotation.*;
@@ -16,7 +17,10 @@ import java.lang.annotation.*;
 @Service
 public @interface OrderHandlerType {
 
-  String source();
+  //String source();
 
-  String payMethod();
+  //String payMethod();
+
+  OrderType value();
+
 }
