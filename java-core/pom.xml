@@ -28,10 +28,10 @@
   </modules>
 
   <dependencies>
-    <dependency>
-      <groupId>com.github.code13.common</groupId>
-      <artifactId>common-util</artifactId>
-    </dependency>
+    <!--<dependency>-->
+    <!--  <groupId>com.github.code13.common</groupId>-->
+    <!--  <artifactId>common-util</artifactId>-->
+    <!--</dependency>-->
   </dependencies>
 
   <dependencyManagement>
