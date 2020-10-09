@@ -25,6 +25,7 @@
     <module>java-annotation</module>
     <module>java-reflect</module>
     <module>java-annotation-processor</module>
+    <module>java-annotation-processor-debug</module>
   </modules>
 
   <dependencies>
