@@ -37,6 +37,7 @@
     <module>prettier-libs</module>
     <module>spring-security</module>
     <module>spring-security-oauth2</module>
+    <module>message-queues</module>
   </modules>
 
   <properties>
