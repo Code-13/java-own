@@ -38,6 +38,7 @@
     <module>spring-security</module>
     <module>spring-security-oauth2</module>
     <module>message-queues</module>
+    <module>java-javaagent</module>
   </modules>
 
   <properties>
