@@ -16,6 +16,7 @@
 
   <modules>
     <module>map-struct</module>
+    <module>jackson</module>
   </modules>
 
   <properties>

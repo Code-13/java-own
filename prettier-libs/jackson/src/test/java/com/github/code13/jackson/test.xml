@@ -1,0 +1,31 @@
+<sysmsg type="sysmsgtemplate">
+  <sysmsgtemplate>
+    <content_template type="tmpl_type_profile">
+      <plain><![CDATA[]]></plain>
+      <template><![CDATA["$username$"邀请"$names$"加入了群聊]]></template>
+      <link_list>
+        <link name="username" type="link_profile">
+          <memberlist>
+            <member>
+              <username><![CDATA[wxid_8rfrvi721nnb22]]></username>
+              <nickname><![CDATA[糯米糍🍥]]></nickname>
+            </member>
+          </memberlist>
+        </link>
+        <link name="names" type="link_profile">
+          <memberlist>
+            <member>
+              <username><![CDATA[wxid_1xv8xhsu08kx21]]></username>
+              <nickname><![CDATA[dreamslink]]></nickname>
+            </member>
+            <member>
+              <username><![CDATA[wxid_c1dpfnpr91nb22]]></username>
+              <nickname><![CDATA[王晶晶]]></nickname>
+            </member>
+          </memberlist>
+          <separator><![CDATA[、]]></separator>
+        </link>
+      </link_list>
+    </content_template>
+  </sysmsgtemplate>
+</sysmsg>
